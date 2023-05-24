@@ -8,6 +8,12 @@ const io = require("socket.io")(http, {
   }
 });
 
+const cors = require("cors")
+
+app.use(cors());
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 io.on('connection', (socket) => {
   socket.on('offer', (data) => {
     socket.broadcast.emit('offer', data);
