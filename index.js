@@ -8,8 +8,6 @@ const io = require("socket.io")(http, {
   }
 });
 
-io.origins('*:*')
-
 io.on('connection', (socket) => {
   socket.on('offer', (data) => {
     socket.broadcast.emit('offer', data);
